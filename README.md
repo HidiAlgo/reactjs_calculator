@@ -1,3 +1,14 @@
+This is a simple react js project, developed for the practise purpose. I highly appreciate if you guys help me to find out what are the bugs in this project. 
+
+In this project I used 5 Components
+  two class components
+  3 functional components
+  
+It is pretty much a cool project for practising
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
