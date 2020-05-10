@@ -1,23 +1,23 @@
 import React from 'react'
 import './Operations.css'
 
-function Operations() {
+function Operations(props) {
     return (
         <>
             <tr>
-                <td><button className="align btn-style opera-bg">+</button></td>
+                <td><button onClick={() => props.appendMethod("+")} className="align btn-style opera-bg">+</button></td>
             </tr>
             <tr>
-                <td><button className="align btn-style opera-bg" >-</button></td>
+                <td><button className="align btn-style opera-bg" onClick={() => props.appendMethod("-")}>-</button></td>
             </tr>
             <tr>
-                <td><button className="align btn-style opera-bg">/</button></td>
+                <td><button className="align btn-style opera-bg" onClick={() => props.appendMethod("/")}>/</button></td>
             </tr>
             <tr>
-                <td><button className="align btn-style opera-bg">*</button></td>
+                <td><button className="align btn-style opera-bg" onClick={() => props.appendMethod("*")} >*</button></td>
             </tr>
             <tr>
-                <td><button className="align eqn" id="eqn-bg">=</button></td>
+                <td><button className="align eqn" id="eqn-bg" onClick={() => props.solveMethod()}>=</button></td>
             </tr>
         </>
     )

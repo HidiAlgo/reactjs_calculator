@@ -5,6 +5,9 @@ import Operations from './Operations'
 
 import './Calculator.css'
 
+
+let resultState = false;
+
 class Calculator extends Component {
 
     constructor(props) {
@@ -15,6 +18,7 @@ class Calculator extends Component {
         }
 
         this.clearme = this.clearme.bind(this)
+        this.solveme = this.solveme.bind(this)
     }
 
     render() {
@@ -34,7 +38,7 @@ class Calculator extends Component {
                             <td>
                                 <table>
                                     <tbody>
-                                        <Operations />
+                                        <Operations appendMethod={this.append} solveMethod={this.solveme} />
                                     </tbody>
                                 </table>
                             </td>
@@ -47,6 +51,12 @@ class Calculator extends Component {
     }
 
     append = (newValue) => {
+        if (resultState == true) {
+            this.setState({
+                displayResult: ""
+            })
+            resultState = false
+        }
         this.setState((prevState) => {
             return {
                 displayResult: prevState.displayResult + newValue
@@ -55,8 +65,24 @@ class Calculator extends Component {
     }
 
     clearme() {
+        let str = this.state.displayResult
+        let newStr = str.substring(0, str.length - 1)
         this.setState({
-            displayResult: ""
+            displayResult: newStr
+        })
+    }
+
+    solveme() {
+        let result;
+        try {
+            result = eval(this.state.displayResult);
+        } catch (e) {
+            result = "Math error"
+            resultState = true
+        }
+
+        this.setState({
+            displayResult: result + ""
         })
     }
 }
